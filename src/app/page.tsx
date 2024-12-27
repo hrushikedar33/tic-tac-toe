@@ -88,21 +88,21 @@ export default function Home() {
         : `${isXNext ? 'X' : 'O'}`;
 
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <ModeToggle />
             <Card className="w-full max-w-md mx-auto">
                 <CardHeader className="text-center font-bold text-2xl">
                     Tic Tac Toe
                     <CardDescription>Challenge yourself!!</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex flex-col items-center justify-center">
                     <div className="text-center mb-5">{`Next player is : ${status}`}</div>
 
-                    <div className="grid grid-cols-3 gap-3 mb-5">
+                    <div className="grid grid-cols-3 gap-2 mb-5">
                         {board.map((square, index) => (
                             <Button
                                 key={index}
-                                className="font-bold text-2xl"
+                                className="font-bold h-20 w-20 text-2xl text-orange-500"
                                 variant={'outline'}
                                 onClick={() => handleClick(index)}
                                 disabled={square !== null || winner !== null}
@@ -117,7 +117,7 @@ export default function Home() {
                     </Button>
 
                     <AlertDialog open={isWinner} onOpenChange={setIsWinner}>
-                        <AlertDialogContent>
+                        <AlertDialogContent className="w-full">
                             <AlertDialogHeader>
                                 <AlertDialogTitle>Game Over!!</AlertDialogTitle>
                                 <AlertDialogDescription>
